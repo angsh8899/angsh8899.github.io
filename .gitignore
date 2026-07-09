@@ -1,0 +1,23 @@
+# reference material (scraped chanhdai.com + friends)
+chanhdai.com/
+127.0.0.1_8081/
+abs-0.twimg.com/
+assets.chanhdai.com/
+
+# orphaned scaffold from the multi-file iteration
+blocks/
+components/
+shared/
+
+# asset libraries not currently used
+open-peeps/
+
+# system
+.DS_Store
+Thumbs.db
+
+# defensive: never sweep these in
+node_modules/
+.idea/
+.vscode/
+*.log
