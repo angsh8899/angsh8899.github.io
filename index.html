@@ -264,9 +264,39 @@
     display: block;
     font-family: var(--font-mono); font-size: 12px;
     color: var(--foreground);
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
   .about strong { color: var(--foreground); font-weight: 600; }
+
+  /* Angles: HOW / WHY split panels */
+  .angles {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+    margin-top: 14px;
+  }
+  .angle-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--muted-fg);
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+    text-transform: uppercase;
+  }
+  .angle-body {
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .angle-body p:first-child { margin-top: 0; }
+  .angle-body p:last-child { margin-bottom: 0; }
+  .angle-body em { color: var(--muted-fg); font-style: italic; }
+  @media (max-width: 540px) {
+    .angles { grid-template-columns: 44px 1fr; column-gap: 12px; }
+  }
 
   /* ─── Social chips ─── */
   .socials { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -328,6 +358,50 @@
     white-space: nowrap;
   }
 
+  /* ─── Award Tour headline stats ─── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: var(--card);
+  }
+  .stat {
+    padding: 18px 12px 14px;
+    text-align: center;
+    position: relative;
+  }
+  .stat + .stat { border-left: 1px dashed var(--line); }
+  .stat-num {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--foreground);
+  }
+  .stat-mult {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted-fg);
+    margin-right: 2px;
+    vertical-align: 12px;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-fg);
+    margin-top: 8px;
+  }
+  @media (max-width: 540px) {
+    .stat-num { font-size: 32px; }
+    .stat { padding: 14px 6px 12px; }
+  }
+
   /* ─── Award row ─── */
   .award {
     display: grid; grid-template-columns: 20px 1fr auto;
@@ -339,6 +413,103 @@
   .award-mark { font-size: 14px; }
   .award-sub  { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); margin-top: 2px; }
   .award-year { font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); }
+
+  /* ─── Capabilities (numbered rows) ─── */
+  .caps { display: flex; flex-direction: column; }
+  .cap {
+    display: grid; grid-template-columns: 44px 1fr;
+    gap: 12px; padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .cap:last-child { border-bottom: 0; }
+  .cap-n {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg-subtle, var(--muted-fg));
+    padding-top: 2px;
+  }
+  .cap-body { display: flex; flex-direction: column; gap: 4px; }
+  .cap-name {
+    font-size: 14.5px; font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+  }
+  .cap-sub {
+    list-style: none; padding: 0; margin: 6px 0 0;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .cap-sub li {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted-fg);
+    padding-left: 14px;
+    position: relative;
+  }
+  .cap-sub li::before {
+    content: "→"; position: absolute; left: 0;
+    color: var(--muted-fg); font-size: 10px;
+  }
+
+  /* ─── Sell Your Time · rate card ─── */
+  .rate-card {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .rate {
+    padding: 14px;
+    background: var(--card);
+    position: relative;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .rate:nth-child(odd) { border-right: 1px dashed var(--line); }
+  .rate:nth-child(n+3) { border-top: 1px dashed var(--line); }
+  .rate-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted-fg);
+  }
+  .rate-price {
+    font-family: var(--font-serif); font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+    line-height: 1;
+  }
+  .rate-price .eth {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted-fg);
+    font-weight: normal;
+    margin-left: 4px;
+    letter-spacing: 0;
+  }
+  .rate-slots {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted-fg);
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+  }
+  .rate-total {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--foreground);
+    font-weight: 600;
+  }
+  .rate-note {
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--muted-fg); text-align: center;
+    margin-top: 10px; letter-spacing: 0.04em;
+  }
+  @media (max-width: 540px) {
+    .rate-card { grid-template-columns: 1fr; }
+    .rate:nth-child(odd) { border-right: 0; }
+    .rate + .rate { border-top: 1px dashed var(--line); }
+    .rate:nth-child(n+3) { border-top: 1px dashed var(--line); }
+  }
 
   /* ─── Job block (Experience / Education) ─── */
   .job {
@@ -363,6 +534,89 @@
     background: var(--success); display: inline-block; vertical-align: middle;
     margin-right: 8px;
     box-shadow: 0 0 0 3px color-mix(in oklab, var(--success) 20%, transparent);
+  }
+
+  /* ─── Play grid (concept tiles) ─── */
+  .play-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .play-item {
+    padding: 18px 12px;
+    text-align: center;
+    background: var(--background);
+    transition: background .2s ease;
+    display: flex; flex-direction: column; gap: 4px; align-items: center;
+  }
+  .play-item + .play-item { border-left: 1px dashed var(--line); }
+  .play-item:nth-child(3n+1) { border-left: 0; }
+  .play-item:nth-child(n+4) { border-top: 1px dashed var(--line); }
+  .play-item:hover { background: var(--accent); text-decoration: none; }
+  .play-name {
+    font-family: var(--font-serif); font-weight: 500;
+    font-size: 15px; color: var(--foreground);
+    letter-spacing: -0.01em;
+  }
+  .play-tag {
+    font-family: var(--font-mono); font-size: 9px;
+    color: var(--muted-fg); letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .play-glyph {
+    font-family: var(--font-mono); font-size: 14px;
+    color: var(--muted-fg);
+    margin-bottom: 2px;
+  }
+  @media (max-width: 540px) {
+    .play-grid { grid-template-columns: repeat(2, 1fr); }
+    .play-item:nth-child(3n+1) { border-left: 1px dashed var(--line); }
+    .play-item:nth-child(2n+1) { border-left: 0; }
+    .play-item:nth-child(n+3) { border-top: 1px dashed var(--line); }
+  }
+
+  /* ─── Learn (2-column: Near Misses / Research) ─── */
+  .learn-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .learn-col {
+    padding: 16px;
+    background: var(--card);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .learn-col + .learn-col { border-left: 1px dashed var(--line); }
+  .learn-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--muted-fg);
+    text-transform: uppercase;
+  }
+  .learn-head .sig { color: var(--foreground); font-size: 12px; }
+  .learn-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .learn-list li {
+    font-size: 13px; color: var(--foreground);
+    padding-left: 14px; position: relative;
+    line-height: 1.4;
+  }
+  .learn-list li::before {
+    content: "→"; position: absolute; left: 0; top: 0;
+    color: var(--muted-fg); font-family: var(--font-mono); font-size: 11px;
+  }
+  .learn-list .learn-sub {
+    display: block;
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--muted-fg);
+    margin-top: 2px; letter-spacing: 0.04em;
+  }
+  @media (max-width: 540px) {
+    .learn-grid { grid-template-columns: 1fr; }
+    .learn-col + .learn-col { border-left: 0; border-top: 1px dashed var(--line); }
   }
 
   /* ─── DAOs ─── */
@@ -524,7 +778,7 @@
   }
   .logo-item {
     display: inline-flex; align-items: center;
-    height: 32px; padding: 0 4px;
+    height: 30px; padding: 0 4px;
     font-family: var(--font-serif); font-weight: 500;
     font-size: 15px; color: var(--muted-fg);
     letter-spacing: -0.01em;
@@ -538,6 +792,15 @@
     border-radius: 3px;
     color: var(--muted-fg);
     margin-right: 8px; letter-spacing: 0.08em;
+  }
+  /* Denser roster variant for the big list */
+  .marquee.roster { gap: 28px; animation-duration: 80s; }
+  .marquee.roster.reverse { animation-duration: 95s; }
+  .roster-meta {
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--muted-fg); margin-top: 10px;
+    letter-spacing: 0.06em; text-transform: uppercase;
   }
 
   /* ─── PORTED: Testimonials Marquee ─── */
@@ -846,13 +1109,24 @@
 
   <!-- ABOUT -->
   <section id="about" aria-labelledby="about-t">
-    <h2 class="sh" id="about-t"><span>About</span></h2>
+    <h2 class="sh" id="about-t"><span>About</span><span class="more">Angles · How / Why</span></h2>
     <div class="about">
       <span class="about-flag">⚑ World's Firsts. Innovative Generalism.</span>
-      <p>Now begins a story. This story begins with the one known as <strong>@iamkhayyam</strong>.</p>
-      <p>An award-winning innovative generalist who dabbles in frontier technology and has invested years developing his skills through extravagant trial and error. As a result, the number of data points he has to cross-reference and correlate allows for much simpler solutions for problematic situations.</p>
-      <p>Being that he possesses a love for long-tailed tales as well as knowledge of how pattern recognition affects something, it's no wonder why he is an avid learner who is always open to making something better than before.</p>
-      <p>If you're working on a <strong>World's First</strong> or require the full tool belt of a generalist, please get a hold of him. <em>The time is now.</em></p>
+      <p>I am Khayyam, and I'm an <strong>Innovative Generalist</strong>. Which is to say: I've been pioneering frontier technology for a couple decades — with another couple decades of tuition paid at the Institute of Trial &amp; Error. <em>In other words, I've fallen more times than most others.</em></p>
+    </div>
+
+    <div class="angles">
+      <div class="angle-label">HOW /</div>
+      <div class="angle-body">
+        <p><strong>All the angles.</strong> If you don't have all the angles covered, how is one to see all the sides to the problem?</p>
+        <p>A predisposition for storytelling, pattern recognition, and connoisseurship — with a penchant for repeating any process if it can be understood with a new lens. From a young age, immersing into environments and enveloping the long-tailed narrative that flows when the creative side and the technological chops sit in balance.</p>
+      </div>
+
+      <div class="angle-label">WHY /</div>
+      <div class="angle-body">
+        <p><strong>Familiar, yet nostalgic.</strong> Translating complicated concepts into narratives that seem familiar, yet nostalgic in ways. Award-winning, in fact.</p>
+        <p>If you're working on a <strong>World's First</strong> — or need the full tool belt of a generalist — please get a hold of me. <em>The time is now.</em></p>
+      </div>
     </div>
   </section>
 
@@ -906,68 +1180,18 @@
     </div>
   </section>
 
-  <!-- TRUSTED BY (Logos Carousel) -->
+  <!-- BRANDED ROSTER (Logos Carousel · 155+ brands) -->
   <section id="trusted" aria-labelledby="trusted-t">
-    <h2 class="sh" id="trusted-t"><span>Trusted By</span><span class="n">30+</span></h2>
+    <h2 class="sh" id="trusted-t"><span>Branded Roster</span><span class="n" id="rosterCount">155+</span></h2>
     <div class="marquee-wrap">
-      <div class="marquee">
-        <!-- pass 1 -->
-        <span class="logo-item"><span class="lo-mark">SONY</span>Sony Research</span>
-        <span class="logo-item"><span class="lo-mark">NIKE</span>Nike</span>
-        <span class="logo-item"><span class="lo-mark">AMEX</span>American Express</span>
-        <span class="logo-item"><span class="lo-mark">VOLVO</span>Volvo Trucks</span>
-        <span class="logo-item"><span class="lo-mark">NFL</span>National Football League</span>
-        <span class="logo-item"><span class="lo-mark">NYT</span>The New York Times</span>
-        <span class="logo-item"><span class="lo-mark">GE</span>GE Healthcare</span>
-        <span class="logo-item"><span class="lo-mark">GOOG</span>Google</span>
-        <span class="logo-item"><span class="lo-mark">INTEL</span>Intel</span>
-        <span class="logo-item"><span class="lo-mark">MTV</span>MTV · Viacom</span>
-        <span class="logo-item"><span class="lo-mark">DISCV</span>Discovery Channel</span>
-        <span class="logo-item"><span class="lo-mark">CBS</span>CBS</span>
-        <span class="logo-item"><span class="lo-mark">SMSNG</span>Samsung</span>
-        <!-- pass 2 (duplicate for seamless loop) -->
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">SONY</span>Sony Research</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">NIKE</span>Nike</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">AMEX</span>American Express</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">VOLVO</span>Volvo Trucks</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">NFL</span>National Football League</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">NYT</span>The New York Times</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">GE</span>GE Healthcare</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">GOOG</span>Google</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">INTEL</span>Intel</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">MTV</span>MTV · Viacom</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">DISCV</span>Discovery Channel</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">CBS</span>CBS</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">SMSNG</span>Samsung</span>
-      </div>
+      <div class="marquee roster" id="rosterRowA" data-brands="AEG|ABC News|Akamai|AMEX Unstaged|Anthill Films|AT&T|Audi|Bacardi|Billboard Music Awards|Black Eyed Peas|Brain Farm|BN3TH|British Airways|Burberry|CAA|Cadillac|Calle 13|Castrol|CBS|Chevrolet|Coca-Cola|CoLoft|Converse|DARPA|Democratic National Convention|Deutsche Bank|Dewar's|Digital Domain|Disclosure|Discovery Channel|Disney ABC Television|Doritos|Dove|EA Sports|Emmy Awards|Endemol|ESPN|Fifty Shades of Grey|G.H. Mumm|Gagosian|Gatorade|GE Healthcare|Georgia Aquarium|Go-Pro|HBO|Hootsuite|Hulu|IAB|Intel|Jeep|Jet Blue|Kaplow PR|Kaskade|Katalyst|Kings of Leon|K'Naan|K'Os|LA Kings|Land Rover|Lexus|Lip Sync Battle|Live Nation|Live Planet|LL Cool J|Lloyd Klein|Lloyds TSB|LMFAO|M80|Mashable"></div>
     </div>
-    <div class="marquee-wrap" style="margin-top: 16px;">
-      <div class="marquee reverse">
-        <span class="logo-item"><span class="lo-mark">VTCN</span>Vatican / Pope Francis</span>
-        <span class="logo-item"><span class="lo-mark">LR</span>Land Rover</span>
-        <span class="logo-item"><span class="lo-mark">CTRL</span>Castrol</span>
-        <span class="logo-item"><span class="lo-mark">TSB</span>Lloyds TSB</span>
-        <span class="logo-item"><span class="lo-mark">CCLA</span>Coca-Cola</span>
-        <span class="logo-item"><span class="lo-mark">HULU</span>Hulu</span>
-        <span class="logo-item"><span class="lo-mark">TLUS</span>Telus</span>
-        <span class="logo-item"><span class="lo-mark">DRTS</span>Doritos</span>
-        <span class="logo-item"><span class="lo-mark">BCRD</span>Bacardi</span>
-        <span class="logo-item"><span class="lo-mark">MTNDW</span>Mountain Dew</span>
-        <span class="logo-item"><span class="lo-mark">CNVR</span>Converse</span>
-        <span class="logo-item"><span class="lo-mark">MSFT</span>Metastage</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">VTCN</span>Vatican / Pope Francis</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">LR</span>Land Rover</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">CTRL</span>Castrol</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">TSB</span>Lloyds TSB</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">CCLA</span>Coca-Cola</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">HULU</span>Hulu</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">TLUS</span>Telus</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">DRTS</span>Doritos</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">BCRD</span>Bacardi</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">MTNDW</span>Mountain Dew</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">CNVR</span>Converse</span>
-        <span class="logo-item" aria-hidden="true"><span class="lo-mark">MSFT</span>Metastage</span>
-      </div>
+    <div class="marquee-wrap" style="margin-top: 12px;">
+      <div class="marquee roster reverse" id="rosterRowB" data-brands="Mercedes Benz|Metastage|Mettle|MGM|Michael Kors|Microsoft XBOX|Mini Cooper|MLB|MLS|Mountain Dew|MTV|MuchMusic|Music World Entertainment|NASA|National Geographic|NBA|NBC Sports|NBC Vancouver Olympics|NFL|NHL|Nike|Nokia|NVIXM|Oculus VR|Okayplayer|Orange|Paramount Pictures|Pepsi|Pfizer|Portable Electric|Red Bull Media House|Republican National Convention|Reunion Island|Roddenberry Entertainment|SAG Awards|Samsung|Second Cup|Skype|Social Engage|Sony (MADO)|Sony Music|Sony BXG|Sony Electronics|Starbucks|Storyworks|SurfAir|SXSW|Syfy|TAG Heuer|Taylor Swift|Technicolor|Telemundo|Telus|The Agency Group|The Audience|The Expanse|The New York Times|Tough Mudder|Travel Alberta|Tribeca Film Festival|True Diagnostics|Under Armor|Union Pacific|United Nations|UN Foundation|Universal Music|US Army|USA Network|Vatican / Pope Francis|Viacom|Viddy|VideoCoin|Vevo|Volvo Trucks|Wall|Warner Bros|Warner Music Group|Western Union|What's Trending|Will.I.Am|Within|WME|WonderSeed Foundation|World Youth Day|Wynn Resorts|X Games|Yahoo Search|YouTube|Z-Trip"></div>
+    </div>
+    <div class="roster-meta">
+      <span>Brands · Agencies · Identities</span>
+      <span>Hover to pause · <a href="#work" style="color:inherit;text-decoration:underline;text-decoration-color:var(--line);">See featured →</a></span>
     </div>
   </section>
 
@@ -1070,7 +1294,21 @@
 
   <!-- AWARDS -->
   <section id="awards" aria-labelledby="awards-t">
-    <h2 class="sh" id="awards-t"><span>Selected Awards</span><span class="n">60+</span></h2>
+    <h2 class="sh" id="awards-t"><span>Award Tour</span><span class="n">60+</span></h2>
+    <div class="stats" aria-label="Career recognitions">
+      <div class="stat">
+        <div class="stat-num"><span class="stat-mult">×</span>26</div>
+        <div class="stat-label">Cannes Lions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="stat-mult">×</span>1</div>
+        <div class="stat-label">Emmy Award</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="stat-mult">×</span>∞</div>
+        <div class="stat-label">Best in Show</div>
+      </div>
+    </div>
     <div class="list">
       <div class="award"><span class="award-mark">🏆</span><span>Emmy — Taylor Swift × AMEX UNSTAGED<span class="award-sub">Outstanding Creative Achievement in Interactive Media · Television Academy</span></span><span class="award-year">2015</span></div>
       <div class="award"><span class="award-mark">⭐</span><span>Cannes Grand Prix — Volvo Trucks<span class="award-sub">Creative Effectiveness · Cannes Lions</span></span><span class="award-year">2015</span></div>
@@ -1083,6 +1321,72 @@
       <div class="award"><span class="award-mark">🎖</span><span>Best Livestream Experience<span class="award-sub">VR Fest @ CES</span></span><span class="award-year">2018</span></div>
       <div class="award"><span class="award-mark">🥉</span><span>Bronze Lion — Lloyds TSB / London Olympics<span class="award-sub">Media / Best Use of Social · Cannes Lions</span></span><span class="award-year">2013</span></div>
     </div>
+  </section>
+
+  <!-- WORK · CAPABILITIES -->
+  <section id="capabilities" aria-labelledby="capabilities-t">
+    <h2 class="sh" id="capabilities-t"><span>Work · Capabilities</span></h2>
+    <div class="caps">
+      <div class="cap">
+        <span class="cap-n">01</span>
+        <div class="cap-body"><span class="cap-name">Marketing</span></div>
+      </div>
+      <div class="cap">
+        <span class="cap-n">02</span>
+        <div class="cap-body"><span class="cap-name">Immersive</span></div>
+      </div>
+      <div class="cap">
+        <span class="cap-n">03</span>
+        <div class="cap-body"><span class="cap-name">Strategy</span></div>
+      </div>
+      <div class="cap">
+        <span class="cap-n">04</span>
+        <div class="cap-body"><span class="cap-name">Development</span></div>
+      </div>
+      <div class="cap">
+        <span class="cap-n">05</span>
+        <div class="cap-body"><span class="cap-name">Ideation</span></div>
+      </div>
+      <div class="cap">
+        <span class="cap-n">06</span>
+        <div class="cap-body">
+          <span class="cap-name">World's Firsts <span class="muted" style="font-family: var(--font-mono); font-size: 11px; margin-left: 4px;">⚑</span></span>
+          <ul class="cap-sub">
+            <li>Game-based learning + curriculum</li>
+            <li>Location-based entertainment</li>
+            <li>Technology-enabled storytelling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELL YOUR TIME · rate card -->
+  <section id="rates" aria-labelledby="rates-t">
+    <h2 class="sh" id="rates-t"><span>Sell Your Time</span><span class="more">Rate Card · Ξ</span></h2>
+    <div class="rate-card">
+      <div class="rate">
+        <div class="rate-head"><span>01 · Hourly</span><span>on-call</span></div>
+        <div class="rate-price">1<span class="eth">Ξ / hr</span></div>
+        <div class="rate-slots"><span>100 slots</span><span class="rate-total">= 100 Ξ</span></div>
+      </div>
+      <div class="rate">
+        <div class="rate-head"><span>02 · Weekly</span><span>sprint</span></div>
+        <div class="rate-price">5<span class="eth">Ξ / wk</span></div>
+        <div class="rate-slots"><span>20 slots</span><span class="rate-total">= 100 Ξ</span></div>
+      </div>
+      <div class="rate">
+        <div class="rate-head"><span>03 · Monthly</span><span>engagement</span></div>
+        <div class="rate-price">16<span class="eth">Ξ / mo</span></div>
+        <div class="rate-slots"><span>4 slots</span><span class="rate-total">= 64 Ξ</span></div>
+      </div>
+      <div class="rate">
+        <div class="rate-head"><span>04 · Annual</span><span>full runway</span></div>
+        <div class="rate-price">100<span class="eth">Ξ / yr</span></div>
+        <div class="rate-slots"><span>1 slot</span><span class="rate-total">= 100 Ξ</span></div>
+      </div>
+    </div>
+    <p class="rate-note">Fiat, wire, or on-chain · <a href="mailto:theusual@gmail.com" style="color:inherit;text-decoration:underline;text-decoration-color:var(--line);">theusual@gmail.com</a> to inquire</p>
   </section>
 
   <!-- WORK EXPERIENCE -->
@@ -1175,6 +1479,37 @@
     </div>
   </section>
 
+  <!-- LEARN · Near Misses + Research -->
+  <section id="learn" aria-labelledby="learn-t">
+    <h2 class="sh" id="learn-t"><span>Learn</span><span class="more">Near Misses · Research</span></h2>
+    <div class="learn-grid">
+      <div class="learn-col">
+        <div class="learn-head">
+          <span class="sig">Near Misses /</span>
+          <span>the ones that got away</span>
+        </div>
+        <ul class="learn-list">
+          <li>Paramount<span class="learn-sub">Interstellar</span></li>
+          <li>HBO<span class="learn-sub">Game of Thrones</span></li>
+          <li>HBO<span class="learn-sub">HBO Go</span></li>
+          <li>Ogilvy<span class="learn-sub">British Airways</span></li>
+        </ul>
+      </div>
+      <div class="learn-col">
+        <div class="learn-head">
+          <span class="sig">Research /</span>
+          <span>ongoing threads</span>
+        </div>
+        <ul class="learn-list">
+          <li>Covid Risk Mitigation<span class="learn-sub">containment · airflow · signal</span></li>
+          <li>Vocal Biomarkers<span class="learn-sub">detection · diagnostics</span></li>
+          <li>(IR) Ultra Wideband<span class="learn-sub">sensing · positioning</span></li>
+          <li>NLP / NLU / NLG<span class="learn-sub">the road to AGI</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- DAOs -->
   <section id="daos" aria-labelledby="daos-t">
     <h2 class="sh" id="daos-t"><span>Side Projects · DAOs</span></h2>
@@ -1208,6 +1543,58 @@
         <div class="dao-emoji">🌈</div>
         <div class="dao-name">Squiggle DAO</div>
         <div class="dao-role">Scholar</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PLAY · concepts + domains -->
+  <section id="play" aria-labelledby="play-t">
+    <h2 class="sh" id="play-t"><span>Play</span><span class="more">Concepts · Domains · Sandboxes</span></h2>
+    <div class="play-grid">
+      <a class="play-item" href="#">
+        <span class="play-glyph">◈</span>
+        <span class="play-name">Free the Pixel</span>
+        <span class="play-tag">CONCEPT</span>
+      </a>
+      <a class="play-item" href="#">
+        <span class="play-glyph">⚡</span>
+        <span class="play-name">Tout de Suite</span>
+        <span class="play-tag">DOMAIN</span>
+      </a>
+      <a class="play-item" href="#">
+        <span class="play-glyph">🐈‍⬛</span>
+        <span class="play-name">BlackCats</span>
+        <span class="play-tag">SANDBOX</span>
+      </a>
+      <a class="play-item" href="#">
+        <span class="play-glyph">▢</span>
+        <span class="play-name">Magic Window</span>
+        <span class="play-tag">CONCEPT</span>
+      </a>
+      <a class="play-item" href="#">
+        <span class="play-glyph">◐</span>
+        <span class="play-name">Drive-In</span>
+        <span class="play-tag">DOMAIN</span>
+      </a>
+      <a class="play-item" href="#">
+        <span class="play-glyph">⌸</span>
+        <span class="play-name">Domain Expertise</span>
+        <span class="play-tag">PORTFOLIO</span>
+      </a>
+      <a class="play-item" href="#">
+        <span class="play-glyph">✎</span>
+        <span class="play-name">Stolen Works</span>
+        <span class="play-tag">CONCEPT</span>
+      </a>
+      <a class="play-item" href="#">
+        <span class="play-glyph">▤</span>
+        <span class="play-name">Cultural Museum</span>
+        <span class="play-tag">ARCHIVE</span>
+      </a>
+      <a class="play-item" href="#">
+        <span class="play-glyph">✦</span>
+        <span class="play-name">Geniesis</span>
+        <span class="play-tag">CONCEPT</span>
       </a>
     </div>
   </section>
@@ -1307,6 +1694,21 @@
 
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Branded Roster — inflate data-brands into two seamless marquees
+  (function () {
+    const rows = document.querySelectorAll('.marquee.roster[data-brands]');
+    let total = 0;
+    rows.forEach((row) => {
+      const brands = row.dataset.brands.split('|').map(s => s.trim()).filter(Boolean);
+      total += brands.length;
+      const html = brands.map(b => `<span class="logo-item">${b}</span>`).join('');
+      // Duplicate the set for a seamless loop (translateX -50% animation)
+      row.innerHTML = html + html.replace(/<span class="logo-item"/g, '<span class="logo-item" aria-hidden="true"');
+    });
+    const counter = document.getElementById('rosterCount');
+    if (counter && total) counter.textContent = total;
+  })();
 
   // Glow Card cursor tracking — each card follows its own hover position
   (function () {
